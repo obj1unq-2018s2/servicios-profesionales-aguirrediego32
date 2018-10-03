@@ -1,0 +1,40 @@
+import profesionales.*
+
+describe "cosas de una empresa"{
+const sanMartin = new Universidad()
+ const rosario = new Universidad()
+ const corrientes= new Universidad()
+ const hurlingan= new Universidad()
+ // profesionales
+ const juana = new ProfesionalVinculado()
+ const melina = new ProfesionalAsociado()
+ const rocio = new ProfesionalLibre()
+ const luciana = new ProfesionalLibre()
+// Empresa de Servicios
+const empresaQ = new EmpresaDeServicios()	
+
+	
+fixture{	
+  sanMartin = new Universidad(honorarios=3500, provincia="Buenos Aires")
+  rosario = new Universidad(honorarios=2800,provincia="Rosario")
+  corrientes= new Universidad(honorarios = 4200,provincia="Corrientes")
+  hurlingan= new Universidad(honorarios = 8800,provincia="Buenos Aires")
+
+ juana = new ProfesionalVinculado(universidad=rosario)
+  melina = new ProfesionalAsociado(universidad=corrientes)
+  rocio = new ProfesionalLibre(universidad=hurlingan, honorarios=5000,provinciasQueTrabaja=#{"Santa Fe","Cordoba","Buenos Aires"})
+  luciana = new ProfesionalLibre(universidad=rosario,honorarios=3200,provinciasQueTrabaja=#{"Santa Fe","Entre Rios"})
+
+ empresaQ = new EmpresaDeServicios(honorariosReferencia = 3500,profesionales=#{juana,melina,rocio,luciana})	
+
+
+}
+test "1 profesional mas caro debe ser rocio"{
+	assert.equals(#{rocio},empresaQ.profesionalesCaros(empresaQ))
+	
+	}
+test"2 profesional mas barato debe ser juana"{
+	assert.equals(#{juana},empresaQ.profesionalMasBarato(empresaQ))
+}	
+
+}
