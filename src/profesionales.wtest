@@ -1,6 +1,7 @@
 import profesionales.*
 
 describe "cosas de una empresa"{
+	// TODO Esta inicialización de variables hace cosas dos veces, mostrando problemas de comprensión en conceptos básicos.
 const sanMartin = new Universidad()
  const rosario = new Universidad()
  const corrientes= new Universidad()
@@ -29,7 +30,9 @@ fixture{
 
 
 }
+// TODO Tests incompletos
 test "1 profesional mas caro debe ser rocio"{
+	// TODO Por qué recibe la empresa por parámetro?
 	assert.equals(#{rocio},empresaQ.profesionalesCaros(empresaQ))
 	
 	}

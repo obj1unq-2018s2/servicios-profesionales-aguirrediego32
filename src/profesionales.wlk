@@ -18,9 +18,11 @@ class ProfesionalVinculado {
 	method universidad() { return universidad }
 	method universidad(univ) { universidad = univ }
 	method provinciasDondePuedeTrabajar(){
+		// TODO Mal indentado.
 	return	universidad.provincia()
 	}
 	method honorariosPorHora(){
+		// TODO Mal indentado.
 	return	universidad.honorarios()
 	}
 }
@@ -30,6 +32,7 @@ class ProfesionalVinculado {
 class ProfesionalLibre {
 	var property universidad
 	var property honorarios
+	// TODO Ojo con inicializar las variables con colecciones vacías, ¿entendés por qué lo hacés?
 	var property provinciasQueTrabaja= #{}
 	method universidad() { return universidad }
 	method universidad(univ) { universidad = univ }
@@ -47,14 +50,18 @@ class EmpresaDeServicios{
 	var profesionales =#{}
 	
 	method honorariosReferencia(){return honorariosReferencia}
-	
+
+	// TODO GRAVE - No tiene sentido recibir la empresa por parámetro.	
 	method profesionalesCaros(empresa)=
 	return profesionales.filter{elemento => elemento.honorariosPorHora()>empresa.honorariosReferencia() }
 	
+	// TODO GRAVE - No tiene sentido recibir la empresa por parámetro.	
 	method universidadesFormadoras(empresa){
+		// TODO For each no devuelve nada.
 		return profesionales.forEach{elemento=> elemento.universidad()}
 	}
 	
+	// TODO GRAVE - No tiene sentido recibir la empresa por parámetro.	
 	method profesionalMasBarato(empresa)
 		{return profesionales.min{elemento=> elemento.honorariosPorHora()}
 	}
@@ -64,6 +71,7 @@ class EmpresaDeServicios{
 	}
 	
 	method profesionalesQueTrabajaronEn(universidad){
+		// TODO Mejor usar count para esto.
 	return	profesionales.filter{elemento=>elemento.universidad()==universidad}.size()
 	}
 }
